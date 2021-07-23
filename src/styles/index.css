@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 html {
-  font-family: 'Montserrat';
+  /* font-family: 'Montserrat'; */
 }
 
 @layer utilities {
@@ -12,11 +12,14 @@ html {
 }
 
 @layer base {
-  /* h1 {
-    @apply text-2xl;
+  button {
+    @apply bg-green-500;
+    @apply text-white;
+    @apply rounded-md;
+    @apply px-2;
+    @apply py-0.5;
+    @apply font-semibold;
+    @apply hover:bg-green-600;
   }
-  h2 {
-    @apply text-xl;
-  } */
 }
 

@@ -1,5 +1,4 @@
 import { plantList } from "../../data/plantList"
-import CareScale from "../CareScale"
 import PlantItem from "../PlantItem"
 import Cover from "../../assets/img/monstera.jpg"
 
@@ -9,15 +8,16 @@ export default function ShoppingList() {
 		[]
 	)
 
-    console.log(categories)
-
-    return <div className="p-4">
-        <ul className=" p-2 bg-gray-100">
-            {categories.map((category) => (
-                <li>{category}</li>
-            ))}
-        </ul>
-        <div className="p-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+    return <div className="p-4 flex flex-col items-center">
+        <div className="mb-6">
+            <select className="align-center">
+                {categories.map((category) => (
+                    <option>{category}</option>
+                ))}
+            </select>
+            <button className="mx-2">Réinitialiser</button>
+        </div>
+        <div className="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
             {plantList.map((plant) => (
                 <PlantItem plant={plant} cover={Cover} />
             ))}

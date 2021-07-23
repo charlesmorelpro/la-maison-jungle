@@ -3,7 +3,7 @@ export default function Cart() {
 	const ivyPrice = 10
 	const flowerPrice = 15
 	return (
-		<div className='text-white bg-green-400 w-56 p-4 m-4'>
+		<div className='text-white bg-green-400 w-full p-4'>
 			<h2>Panier</h2>
 			<ul>
 				<li>Monstera : {monsteraPrice}€</li>

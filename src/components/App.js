@@ -6,8 +6,8 @@ import Footer from './layout/Footer'
 function App() {
   return <>
     <Banner />
-    <div>
-      {/* <Cart /> */}
+    <div className="flex flex-col sm:flex-row pt-24">
+      <Cart />
       <ShoppingList />
     </div>
     <Footer />
