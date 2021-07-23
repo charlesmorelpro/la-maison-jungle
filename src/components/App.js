@@ -1,6 +1,7 @@
 import Banner from './layout/Banner'
 import ShoppingList from './List/ShoppingList'
 import Cart from './Cart'
+import Footer from './layout/Footer'
 
 function App() {
   return <>
@@ -9,6 +10,7 @@ function App() {
       {/* <Cart /> */}
       <ShoppingList />
     </div>
+    <Footer />
   </>
 }
 
