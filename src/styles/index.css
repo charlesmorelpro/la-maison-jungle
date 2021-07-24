@@ -8,11 +8,7 @@ html {
 }
 
 @layer utilities {
-  
-}
-
-@layer base {
-  button {
+  .jungle-button {
     @apply bg-green-500;
     @apply text-white;
     @apply rounded-md;
@@ -21,5 +17,8 @@ html {
     @apply font-semibold;
     @apply hover:bg-green-600;
   }
+}
+
+@layer base {
 }
 
