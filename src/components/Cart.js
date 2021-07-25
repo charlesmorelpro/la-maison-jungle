@@ -1,14 +1,17 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
-export default function Cart() {
-	const monsteraPrice = 8
+export default function Cart({cart, updateCart}) {
 	const [isOpen, setIsOpen] = useState(false)
-	const [cart, updateCart] = useState(0) // Crée le state 'cart' et la méthode 'updateCart'
-	// La valeur par défaut du panier est de 0
+	const totalPrice = cart.reduce((acc, item) => acc + item.amount*item.plant.price, 0)
 
 	const emptyCart = () => {
-		updateCart(0)
+		updateCart([])
+		localStorage.setItem("cart", [])
 	}
+
+	useEffect(() => {
+		document.title = `LMJ: ${totalPrice}€ d'achats`
+	}, [totalPrice])
 
 	return isOpen ? (
 		<div className='text-white bg-green-400 w-full sm:w-60 p-4 flex-shrink-0'>
@@ -17,13 +20,12 @@ export default function Cart() {
 			{cart === 0 ? 
 				<div>Votre panier est vide.</div> : 
 				<ul>
-					<li>({cart}) Monstera : {monsteraPrice}€</li>
+					{cart.map((item) => <li>{item.amount} {item.plant.name} : {item.plant.price}€</li>)}
 				</ul>}
 			<div className="flex justify-between my-4">
-				<button className="jungle-button" onClick={() => updateCart(cart+1)}>Ajouter</button>
-				<div>Total : {monsteraPrice*cart}€</div>
+				<div>Total : {totalPrice}€</div>
 			</div>
-			{cart > 0 && <div className="text-center"><button className="jungle-button" onClick={emptyCart}>Vider le panier</button></div>}
+			{cart.length > 0 && <div className="text-center"><button className="jungle-button" onClick={emptyCart}>Vider le panier</button></div>}
 		</div>
 	) : (<div className="w-full sm:w-44 p-4 text-right sm:text-center flex-shrink-0">
 		<button className="mt-4 p-4 flex-shrink-0 self-start jungle-button" onClick={() => setIsOpen(true)}>Ouvrir le panier</button>
